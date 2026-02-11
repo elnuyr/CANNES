@@ -1,0 +1,58 @@
+@model IEnumerable<CANNESCAKE.Models.Subscriber>
+
+@{
+    ViewData["Title"] = "Abunəçilər";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Abunəçilər</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    E-poçt
+                                </th>
+                                <th>
+                                    Tarix
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>Əməliyyatlar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model) {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @item.SubscribedDate.ToString("dd.MM.yyyy")
+                                    </td>
+                                    <td>
+                                        @if (item.IsActive)
+                                        {
+                                            <label class="badge badge-success">Aktiv</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="badge badge-secondary">Deaktiv</label>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

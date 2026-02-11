@@ -1,0 +1,72 @@
+@model IEnumerable<CANNESCAKE.Models.Testimonial>
+
+@{
+    ViewData["Title"] = "Müştəri Rəyləri";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="card-title">Müştəri Rəyləri</h4>
+                    <a asp-action="Create" class="btn btn-primary btn-sm">Yeni Rəy</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Müştəri
+                                </th>
+                                <th>
+                                    Peşə
+                                </th>
+                                <th>
+                                    Reytinq
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>Əməliyyatlar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model) {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ClientName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Profession)
+                                    </td>
+                                    <td>
+                                        @for(int i=0; i<item.Rating; i++)
+                                        {
+                                            <i class="mdi mdi-star text-warning"></i>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.IsApproved)
+                                        {
+                                            <label class="badge badge-success">Təsdiqlənib</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="badge badge-warning">Gözləyir</label>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="mdi mdi-pencil"></i></a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm"><i class="mdi mdi-eye"></i></a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

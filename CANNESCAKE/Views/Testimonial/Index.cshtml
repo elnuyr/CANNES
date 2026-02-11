@@ -1,0 +1,77 @@
+@{
+    ViewData["Title"] = "Testimonial";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-dark bg-img p-5 mb-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-4 text-uppercase text-white">Müştəri Rəyləri</h1>
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <i class="far fa-square text-primary px-2"></i>
+            <a asp-controller="Testimonial" asp-action="Index">Testimonial</a>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Testimonial Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+            <h2 class="text-primary font-secondary">Müştəri Rəyləri</h2>
+            <h1 class="display-4 text-uppercase">Müştərilərimiz Nə Deyir?</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            <div class="testimonial-item bg-dark text-white border-inner p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="Aygün Məmmədova">
+                    <div class="ps-3">
+                        <h4 class="text-primary text-uppercase mb-1">Aygün Məmmədova</h4>
+                        <span>Müəllim</span>
+                    </div>
+                </div>
+                <p class="mb-0">
+                    Qızımın ad günü üçün sifariş etdiyimiz tort həm görünüş, həm də dad baxımından əla idi. Bütün qonaqlarımız heyran qaldı. Təşəkkürlər Cannes Cake!
+                </p>
+            </div>
+            <div class="testimonial-item bg-dark text-white border-inner p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-2.jpg" style="width: 60px; height: 60px;" alt="Rəşad Əliyev">
+                    <div class="ps-3">
+                        <h4 class="text-primary text-uppercase mb-1">Rəşad Əliyev</h4>
+                        <span>İş Adamı</span>
+                    </div>
+                </div>
+                <p class="mb-0">
+                    Toyumuz üçün sifariş etdiyimiz 3 mərtəbəli tort əsl sənət əsəri idi. Vaxtında çatdırılma və peşəkar xidmət üçün təşəkkür edirik.
+                </p>
+            </div>
+            <div class="testimonial-item bg-dark text-white border-inner p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-3.jpg" style="width: 60px; height: 60px;" alt="Leyla Hüseynova">
+                    <div class="ps-3">
+                        <h4 class="text-primary text-uppercase mb-1">Leyla Hüseynova</h4>
+                        <span>Dizayner</span>
+                    </div>
+                </div>
+                <p class="mb-0">
+                    Şirkətimizin illik yubileyi üçün korporativ tort sifariş etdik. Loqomuz mükəmməl şəkildə hazırlanmışdı. Mütləq yenə sifariş edəcəyik!
+                </p>
+            </div>
+            <div class="testimonial-item bg-dark text-white border-inner p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-4.jpg" style="width: 60px; height: 60px;" alt="Kamran Nəsibov">
+                    <div class="ps-3">
+                        <h4 class="text-primary text-uppercase mb-1">Kamran Nəsibov</h4>
+                        <span>Proqramçı</span>
+                    </div>
+                </div>
+                <p class="mb-0">
+                    Həyat yoldaşımın ad günü üçün sürpriz tort sifariş etdim. Xüsusi dizayn, əla dad və mükəmməl xidmət. Cannes Cake ən yaxşısıdır!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
