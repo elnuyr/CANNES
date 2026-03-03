@@ -1,3 +1,5 @@
+@model IEnumerable<CANNESCAKE.Models.TeamMember>
+
 @{
     ViewData["Title"] = "Master Chefs";
 }
@@ -23,60 +25,43 @@
             <h1 class="display-4 text-uppercase">Usta Aşpazlarımız</h1>
         </div>
         <div class="row g-5">
-            <div class="col-lg-4 col-md-6">
-                <div class="team-item">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="~/assets/img/team-1.jpg" alt="Əli Həsənov">
-                        <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+            @foreach (var member in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            @if (!string.IsNullOrEmpty(member.ImageUrl))
+                            {
+                                <img class="img-fluid w-100" src="@member.ImageUrl" alt="@member.FullName">
+                            }
+                            else
+                            {
+                                <img class="img-fluid w-100" src="~/assets/img/team-1.jpg" alt="@member.FullName">
+                            }
+                            <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-start">
+                                    @if (!string.IsNullOrEmpty(member.TwitterUrl))
+                                    {
+                                        <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="@member.TwitterUrl"><i class="fab fa-twitter fw-normal"></i></a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(member.FacebookUrl))
+                                    {
+                                        <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="@member.FacebookUrl"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(member.InstagramUrl))
+                                    {
+                                        <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="@member.InstagramUrl"><i class="fab fa-instagram fw-normal"></i></a>
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bg-dark border-inner text-center p-4">
-                        <h4 class="text-uppercase text-primary">Əli Həsənov</h4>
-                        <p class="text-white m-0">Baş Aşpaz</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-item">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="~/assets/img/team-2.jpg" alt="Nərmin Əliyeva">
-                        <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
+                        <div class="bg-dark border-inner text-center p-4">
+                            <h4 class="text-uppercase text-primary">@member.FullName</h4>
+                            <p class="text-white m-0">@member.Position</p>
                         </div>
                     </div>
-                    <div class="bg-dark border-inner text-center p-4">
-                        <h4 class="text-uppercase text-primary">Nərmin Əliyeva</h4>
-                        <p class="text-white m-0">Tort Dizayneri</p>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-item">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="~/assets/img/team-3.jpg" alt="Rəşad Məmmədov">
-                        <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-dark border-inner text-center p-4">
-                        <h4 class="text-uppercase text-primary">Rəşad Məmmədov</h4>
-                        <p class="text-white m-0">Pasta Ustası</p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>

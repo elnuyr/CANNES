@@ -953,3 +953,7 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\cakes\198f799e-89c5-490d-866c-94fd3ea38b31.png
+wwwroot\uploads\cakes\886a0741-b5b8-470e-9908-020a2e1fc23a.jpeg
+wwwroot\uploads\team\9bd5f9c4-a0cc-417d-a6f5-ffeb3c722f6b.jpg
+wwwroot\uploads\testimonials\ef9d58fb-22c0-4255-9e84-cd32c4bc9b9c.jpg

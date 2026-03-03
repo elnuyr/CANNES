@@ -1,0 +1,42 @@
+@model CANNESCAKE.Models.ContactMessage
+
+@{
+    ViewData["Title"] = "Mesaj Detalları";
+}
+
+<div class="row">
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Mesaj Detalları</h4>
+                <table class="table table-borderless mt-3">
+                    <tr><th style="width: 150px;">Ad</th><td>@Model.Name</td></tr>
+                    <tr><th>E-poçt</th><td><a href="mailto:@Model.Email">@Model.Email</a></td></tr>
+                    <tr><th>Mövzu</th><td>@(Model.Subject ?? "Mövzu yoxdur")</td></tr>
+                    <tr><th>Tarix</th><td>@Model.CreatedDate.ToString("dd.MM.yyyy HH:mm")</td></tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>
+                            @if (Model.IsRead)
+                            {
+                                <label class="badge badge-success">Oxunub</label>
+                            }
+                            else
+                            {
+                                <label class="badge badge-danger">Oxunmayıb</label>
+                            }
+                        </td>
+                    </tr>
+                </table>
+                <div class="p-3 bg-light rounded mt-3">
+                    <h5>Mesaj:</h5>
+                    <p class="mb-0">@Model.Message</p>
+                </div>
+                <div class="mt-4">
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger me-2"><i class="mdi mdi-delete"></i> Sil</a>
+                    <a asp-action="Index" class="btn btn-light">Geri</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

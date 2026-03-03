@@ -1,0 +1,28 @@
+@model CANNESCAKE.Models.Order
+
+@{
+    ViewData["Title"] = "Sifarişi Sil";
+}
+
+<div class="row">
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-danger"><i class="mdi mdi-alert"></i> Sifarişi Sil</h4>
+                <p class="text-muted mb-4">Bu sifarişi silmək istədiyinizə əminsiniz? Sifarişin bütün məhsulları da silinəcək.</p>
+                <table class="table table-borderless">
+                    <tr><th style="width: 150px;">Sifariş №</th><td><strong>#@Model.Id</strong></td></tr>
+                    <tr><th>Müştəri</th><td>@Model.CustomerName</td></tr>
+                    <tr><th>Cəmi</th><td>@Model.TotalPrice ₼</td></tr>
+                    <tr><th>Tarix</th><td>@Model.OrderDate.ToString("dd.MM.yyyy HH:mm")</td></tr>
+                    <tr><th>Status</th><td>@Model.Status</td></tr>
+                </table>
+                <form asp-action="Delete" class="mt-3">
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="btn btn-danger me-2"><i class="mdi mdi-delete"></i> Bəli, Sil</button>
+                    <a asp-action="Index" class="btn btn-light">Xeyr, Geri Qayıt</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,5 +19,42 @@ namespace CANNESCAKE.Areas.Admin.Controllers
         {
             return View(await _context.ContactMessages.OrderByDescending(m => m.CreatedDate).ToListAsync());
         }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+            var message = await _context.ContactMessages.FirstOrDefaultAsync(m => m.Id == id);
+            if (message == null) return NotFound();
+
+            // Mesajı oxunmuş kimi işarələ
+            if (!message.IsRead)
+            {
+                message.IsRead = true;
+                await _context.SaveChangesAsync();
+            }
+
+            return View(message);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            var message = await _context.ContactMessages.FirstOrDefaultAsync(m => m.Id == id);
+            if (message == null) return NotFound();
+            return View(message);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var message = await _context.ContactMessages.FindAsync(id);
+            if (message != null)
+            {
+                _context.ContactMessages.Remove(message);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

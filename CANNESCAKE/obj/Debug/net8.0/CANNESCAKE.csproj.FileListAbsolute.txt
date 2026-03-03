@@ -252,3 +252,9 @@ C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\ru\Microsoft.CodeAnaly
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\obj\Debug\net8.0\CANNESCAKE.sourcelink.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll

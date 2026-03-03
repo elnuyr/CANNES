@@ -1,0 +1,73 @@
+@model CANNESCAKE.Models.Order
+
+@{
+    ViewData["Title"] = "Sifariş Detalları";
+}
+
+<div class="row">
+    <div class="col-md-10 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Sifariş #@Model.Id Detalları</h4>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5>Müştəri Məlumatları</h5>
+                        <table class="table table-borderless">
+                            <tr><th style="width: 150px;">Ad</th><td>@Model.CustomerName</td></tr>
+                            <tr><th>E-poçt</th><td><a href="mailto:@Model.CustomerEmail">@Model.CustomerEmail</a></td></tr>
+                            <tr><th>Telefon</th><td>@Model.CustomerPhone</td></tr>
+                            <tr><th>Çatdırılma Ünvanı</th><td>@(Model.DeliveryAddress ?? "Qeyd olunmayıb")</td></tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Sifariş Məlumatları</h5>
+                        <table class="table table-borderless">
+                            <tr><th style="width: 150px;">Sifariş Tarixi</th><td>@Model.OrderDate.ToString("dd.MM.yyyy HH:mm")</td></tr>
+                            <tr><th>Çatdırılma Tarixi</th><td>@(Model.DeliveryDate?.ToString("dd.MM.yyyy HH:mm") ?? "Təyin olunmayıb")</td></tr>
+                            <tr><th>Status</th><td><label class="badge badge-info">@Model.Status</label></td></tr>
+                            <tr><th>Cəmi</th><td><strong>@Model.TotalPrice ₼</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.Notes))
+                {
+                    <div class="p-3 bg-light rounded mt-3">
+                        <h5>Qeydlər:</h5>
+                        <p class="mb-0">@Model.Notes</p>
+                    </div>
+                }
+
+                <h5 class="mt-4">Sifariş Məhsulları</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tort</th>
+                                <th>Say</th>
+                                <th>Vahid Qiymət</th>
+                                <th>Cəmi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderItems)
+                            {
+                                <tr>
+                                    <td>@item.Cake?.Name</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.UnitPrice ₼</td>
+                                    <td>@item.TotalPrice ₼</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success me-2"><i class="mdi mdi-pencil"></i> Statusu Dəyiş</a>
+                    <a asp-action="Index" class="btn btn-light">Geri</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

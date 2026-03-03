@@ -1,0 +1,37 @@
+@model CANNESCAKE.Models.Cake
+
+@{
+    ViewData["Title"] = "Tort Detalları";
+}
+
+<div class="row">
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Tort Detalları</h4>
+                <div class="row mt-4">
+                    <div class="col-md-4 text-center">
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded" style="max-height: 250px;" />
+                        }
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table table-borderless">
+                            <tr><th style="width: 180px;">Ad</th><td>@Model.Name</td></tr>
+                            <tr><th>Açıqlama</th><td>@(Model.Description ?? "Qeyd olunmayıb")</td></tr>
+                            <tr><th>Qiymət</th><td>@Model.Price ₼</td></tr>
+                            <tr><th>Kateqoriya</th><td>@Model.Category?.Name</td></tr>
+                            <tr><th>Status</th><td>@(Model.IsAvailable ? "Mövcuddur" : "Bitib")</td></tr>
+                            <tr><th>Yaradılma Tarixi</th><td>@Model.CreatedDate.ToString("dd.MM.yyyy HH:mm")</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success me-2"><i class="mdi mdi-pencil"></i> Redaktə Et</a>
+                    <a asp-action="Index" class="btn btn-light">Geri</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

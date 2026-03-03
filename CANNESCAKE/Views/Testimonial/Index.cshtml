@@ -1,3 +1,5 @@
+@model IEnumerable<CANNESCAKE.Models.Testimonial>
+
 @{
     ViewData["Title"] = "Testimonial";
 }
@@ -23,54 +25,26 @@
             <h1 class="display-4 text-uppercase">Müştərilərimiz Nə Deyir?</h1>
         </div>
         <div class="owl-carousel testimonial-carousel">
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="Aygün Məmmədova">
-                    <div class="ps-3">
-                        <h4 class="text-primary text-uppercase mb-1">Aygün Məmmədova</h4>
-                        <span>Müəllim</span>
+            @foreach (var item in Model)
+            {
+                <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img class="img-fluid flex-shrink-0" src="@item.ImageUrl" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" alt="@item.ClientName">
+                        }
+                        else
+                        {
+                            <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="@item.ClientName">
+                        }
+                        <div class="ps-3">
+                            <h4 class="text-primary text-uppercase mb-1">@item.ClientName</h4>
+                            <span>@item.Profession</span>
+                        </div>
                     </div>
+                    <p class="mb-0">@item.Comment</p>
                 </div>
-                <p class="mb-0">
-                    Qızımın ad günü üçün sifariş etdiyimiz tort həm görünüş, həm də dad baxımından əla idi. Bütün qonaqlarımız heyran qaldı. Təşəkkürlər Cannes Cake!
-                </p>
-            </div>
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-2.jpg" style="width: 60px; height: 60px;" alt="Rəşad Əliyev">
-                    <div class="ps-3">
-                        <h4 class="text-primary text-uppercase mb-1">Rəşad Əliyev</h4>
-                        <span>İş Adamı</span>
-                    </div>
-                </div>
-                <p class="mb-0">
-                    Toyumuz üçün sifariş etdiyimiz 3 mərtəbəli tort əsl sənət əsəri idi. Vaxtında çatdırılma və peşəkar xidmət üçün təşəkkür edirik.
-                </p>
-            </div>
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-3.jpg" style="width: 60px; height: 60px;" alt="Leyla Hüseynova">
-                    <div class="ps-3">
-                        <h4 class="text-primary text-uppercase mb-1">Leyla Hüseynova</h4>
-                        <span>Dizayner</span>
-                    </div>
-                </div>
-                <p class="mb-0">
-                    Şirkətimizin illik yubileyi üçün korporativ tort sifariş etdik. Loqomuz mükəmməl şəkildə hazırlanmışdı. Mütləq yenə sifariş edəcəyik!
-                </p>
-            </div>
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-4.jpg" style="width: 60px; height: 60px;" alt="Kamran Nəsibov">
-                    <div class="ps-3">
-                        <h4 class="text-primary text-uppercase mb-1">Kamran Nəsibov</h4>
-                        <span>Proqramçı</span>
-                    </div>
-                </div>
-                <p class="mb-0">
-                    Həyat yoldaşımın ad günü üçün sürpriz tort sifariş etdim. Xüsusi dizayn, əla dad və mükəmməl xidmət. Cannes Cake ən yaxşısıdır!
-                </p>
-            </div>
+            }
         </div>
     </div>
 </div>

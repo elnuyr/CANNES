@@ -1,0 +1,62 @@
+@model CANNESCAKE.Models.TeamMember
+
+@{
+    ViewData["Title"] = "Yeni Komanda Üzvü";
+}
+
+<div class="row">
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yeni Komanda Üzvü</h4>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="FullName" class="form-label">Ad Soyad</label>
+                        <input asp-for="FullName" class="form-control" placeholder="Ad Soyad daxil edin" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Position" class="form-label">Vəzifə</label>
+                        <input asp-for="Position" class="form-control" placeholder="Vəzifə daxil edin" />
+                        <span asp-validation-for="Position" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Şəkil</label>
+                        <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="FacebookUrl" class="form-label">Facebook URL</label>
+                        <input asp-for="FacebookUrl" class="form-control" placeholder="https://facebook.com/..." />
+                        <span asp-validation-for="FacebookUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TwitterUrl" class="form-label">Twitter URL</label>
+                        <input asp-for="TwitterUrl" class="form-control" placeholder="https://twitter.com/..." />
+                        <span asp-validation-for="TwitterUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="InstagramUrl" class="form-label">Instagram URL</label>
+                        <input asp-for="InstagramUrl" class="form-control" placeholder="https://instagram.com/..." />
+                        <span asp-validation-for="InstagramUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DisplayOrder" class="form-label">Sıra Nömrəsi</label>
+                        <input asp-for="DisplayOrder" class="form-control" type="number" />
+                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary me-2">Yadda Saxla</button>
+                    <a asp-action="Index" class="btn btn-light">Geri</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

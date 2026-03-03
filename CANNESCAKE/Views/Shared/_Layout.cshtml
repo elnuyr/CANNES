@@ -84,6 +84,24 @@
                     </div>
                 </div>
                 <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Əlaqə</a>
+                
+                @if (User.Identity!.IsAuthenticated)
+                {
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color:#E88F2A">Hesabım (@User.Identity.Name)</a>
+                        <div class="dropdown-menu m-0">
+                            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="dropdown-item">Admin Panel</a>
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                <button type="submit" class="dropdown-item text-danger border-0 bg-transparent" style="text-align:left;">Çıxış Et</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="nav-item nav-link" style="color:#E88F2A">Daxil Ol</a>
+                    <a asp-controller="Account" asp-action="Register" class="nav-item nav-link" style="color:#E88F2A">Qeydiyyat</a>
+                }
             </div>
         </div>
     </nav>

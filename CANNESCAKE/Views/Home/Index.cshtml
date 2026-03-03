@@ -144,173 +144,47 @@
         </div>
         <div class="tab-class text-center">
             <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase border-inner p-4 mb-5">
-                <li class="nav-item">
-                    <a class="nav-link text-white active" data-bs-toggle="pill" href="#tab-1">Ad Günü</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-2">Toy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-3">Xüsusi</a>
-                </li>
+                @{ var catIndex = 0; }
+                @foreach (var category in (IEnumerable<CANNESCAKE.Models.Category>)ViewBag.Categories)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @(catIndex == 0 ? "active" : "")" data-bs-toggle="pill" href="#tab-@category.Id">@category.Name</a>
+                    </li>
+                    catIndex++;
+                }
             </ul>
             <div class="tab-content">
-                <div id="tab-1" class="tab-pane fade show p-0 active">
-                    <div class="row g-3">
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="Klassik Ad Günü Tortu" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼45.00</h4>
+                @{ catIndex = 0; }
+                @foreach (var category in (IEnumerable<CANNESCAKE.Models.Category>)ViewBag.Categories)
+                {
+                    <div id="tab-@category.Id" class="tab-pane fade show p-0 @(catIndex == 0 ? "active" : "")">
+                        <div class="row g-3">
+                            @foreach (var cake in category.Cakes)
+                            {
+                                <div class="col-lg-6">
+                                    <div class="d-flex h-100">
+                                        <div class="flex-shrink-0">
+                                            @if (!string.IsNullOrEmpty(cake.ImageUrl))
+                                            {
+                                                <img class="img-fluid" src="@cake.ImageUrl" alt="@cake.Name" style="width: 150px; height: 85px; object-fit: cover;">
+                                            }
+                                            else
+                                            {
+                                                <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="@cake.Name" style="width: 150px; height: 85px; object-fit: cover;">
+                                            }
+                                            <h4 class="bg-dark text-primary p-2 m-0">₼@cake.Price.ToString("F2")</h4>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4 w-100">
+                                            <h5 class="text-uppercase">@cake.Name</h5>
+                                            <span>@cake.Description</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Klassik Ad Günü Tortu</h5>
-                                    <span>Vanil kremlə örtülmüş, rəngarəng bəzəklərlə süslənmiş ənənəvi ad günü tortu</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="Şokoladlı Tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼55.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Şokoladlı Ad Günü Tortu</h5>
-                                    <span>Zəngin şokolad kremlə hazırlanmış, şokolad parçaları ilə bəzədilmiş tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="Meyvəli Tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼60.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Meyvəli Ad Günü Tortu</h5>
-                                    <span>Təzə meyvələrlə bəzədilmiş, yüngül kremlə hazırlanmış mövsümi tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="Fondant Tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼80.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Fondant Ad Günü Tortu</h5>
-                                    <span>Xüsusi dizaynla hazırlanmış fondant örtüklü premium ad günü tortu</span>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
-                </div>
-                <div id="tab-2" class="tab-pane fade show p-0">
-                    <div class="row g-3">
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-2.jpg" alt="Klassik Toy Tortu" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼150.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Klassik Toy Tortu</h5>
-                                    <span>Ağ fondant ilə örtülmüş, zərif çiçək bəzəkli ənənəvi toy tortu</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-2.jpg" alt="3 Mərtəbəli Tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼250.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">3 Mərtəbəli Toy Tortu</h5>
-                                    <span>Üç mərtəbəli, əl ilə hazırlanmış şəkər çiçəkləri ilə bəzədilmiş tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-2.jpg" alt="Premium Tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼350.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Premium Toy Tortu</h5>
-                                    <span>5 mərtəbəli, qızıl bəzəkli, kristal dekorlu lüks toy tortu</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-2.jpg" alt="Nişan Tortu" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼120.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Nişan Tortu</h5>
-                                    <span>Romantik dizaynlı, ürək formasında bəzəklərlə süslənmiş nişan tortu</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="tab-3" class="tab-pane fade show p-0">
-                    <div class="row g-3">
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-3.jpg" alt="Foto Tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼70.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Foto Tort</h5>
-                                    <span>Şəxsi foto ilə çap olunmuş, xüsusi anlar üçün hazırlanmış tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-3.jpg" alt="Tematik Tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼90.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Tematik Tort</h5>
-                                    <span>İstənilən mövzuda xüsusi dizayn edilmiş tematik tort sifarişi</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-3.jpg" alt="Korporativ Tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼100.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Korporativ Tort</h5>
-                                    <span>Şirkət loqosu və rəngləri ilə hazırlanmış korporativ tədbirlər üçün tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-3.jpg" alt="Mini Tortlar" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼35.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Mini Tortlar (6 ədəd)</h5>
-                                    <span>Müxtəlif dadlarda hazırlanmış mini tort dəsti, qonaqlar üçün ideal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    catIndex++;
+                }
             </div>
         </div>
     </div>
@@ -359,60 +233,43 @@
             <h1 class="display-4 text-uppercase">Usta Aşpazlarımız</h1>
         </div>
         <div class="row g-5">
-            <div class="col-lg-4 col-md-6">
-                <div class="team-item">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="~/assets/img/team-1.jpg" alt="Əli Həsənov">
-                        <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+            @foreach (var member in (IEnumerable<CANNESCAKE.Models.TeamMember>)ViewBag.TeamMembers)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            @if (!string.IsNullOrEmpty(member.ImageUrl))
+                            {
+                                <img class="img-fluid w-100" src="@member.ImageUrl" alt="@member.FullName">
+                            }
+                            else
+                            {
+                                <img class="img-fluid w-100" src="~/assets/img/team-1.jpg" alt="@member.FullName">
+                            }
+                            <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-start">
+                                    @if (!string.IsNullOrEmpty(member.TwitterUrl))
+                                    {
+                                        <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="@member.TwitterUrl"><i class="fab fa-twitter fw-normal"></i></a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(member.FacebookUrl))
+                                    {
+                                        <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="@member.FacebookUrl"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(member.InstagramUrl))
+                                    {
+                                        <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="@member.InstagramUrl"><i class="fab fa-instagram fw-normal"></i></a>
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bg-dark border-inner text-center p-4">
-                        <h4 class="text-uppercase text-primary">Əli Həsənov</h4>
-                        <p class="text-white m-0">Baş Aşpaz</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-item">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="~/assets/img/team-2.jpg" alt="Nərmin Əliyeva">
-                        <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
+                        <div class="bg-dark border-inner text-center p-4">
+                            <h4 class="text-uppercase text-primary">@member.FullName</h4>
+                            <p class="text-white m-0">@member.Position</p>
                         </div>
                     </div>
-                    <div class="bg-dark border-inner text-center p-4">
-                        <h4 class="text-uppercase text-primary">Nərmin Əliyeva</h4>
-                        <p class="text-white m-0">Tort Dizayneri</p>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-item">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="~/assets/img/team-3.jpg" alt="Rəşad Məmmədov">
-                        <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-dark border-inner text-center p-4">
-                        <h4 class="text-uppercase text-primary">Rəşad Məmmədov</h4>
-                        <p class="text-white m-0">Pasta Ustası</p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
@@ -444,54 +301,26 @@
             <h1 class="display-4 text-uppercase">Müştərilərimiz Nə Deyir?</h1>
         </div>
         <div class="owl-carousel testimonial-carousel">
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="Aygün Məmmədova">
-                    <div class="ps-3">
-                        <h4 class="text-primary text-uppercase mb-1">Aygün Məmmədova</h4>
-                        <span>Müəllim</span>
+            @foreach (var item in (IEnumerable<CANNESCAKE.Models.Testimonial>)ViewBag.Testimonials)
+            {
+                <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img class="img-fluid flex-shrink-0" src="@item.ImageUrl" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" alt="@item.ClientName">
+                        }
+                        else
+                        {
+                            <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="@item.ClientName">
+                        }
+                        <div class="ps-3">
+                            <h4 class="text-primary text-uppercase mb-1">@item.ClientName</h4>
+                            <span>@item.Profession</span>
+                        </div>
                     </div>
+                    <p class="mb-0">@item.Comment</p>
                 </div>
-                <p class="mb-0">
-                    Qızımın ad günü üçün sifariş etdiyimiz tort həm görünüş, həm də dad baxımından əla idi. Bütün qonaqlarımız heyran qaldı!
-                </p>
-            </div>
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-2.jpg" style="width: 60px; height: 60px;" alt="Rəşad Əliyev">
-                    <div class="ps-3">
-                        <h4 class="text-primary text-uppercase mb-1">Rəşad Əliyev</h4>
-                        <span>İş Adamı</span>
-                    </div>
-                </div>
-                <p class="mb-0">
-                    Toyumuz üçün sifariş etdiyimiz 3 mərtəbəli tort əsl sənət əsəri idi. Vaxtında çatdırılma və peşəkar xidmət üçün təşəkkür!
-                </p>
-            </div>
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-3.jpg" style="width: 60px; height: 60px;" alt="Leyla Hüseynova">
-                    <div class="ps-3">
-                        <h4 class="text-primary text-uppercase mb-1">Leyla Hüseynova</h4>
-                        <span>Dizayner</span>
-                    </div>
-                </div>
-                <p class="mb-0">
-                    Şirkətimizin illik yubileyi üçün korporativ tort sifariş etdik. Loqomuz mükəmməl şəkildə hazırlanmışdı!
-                </p>
-            </div>
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <img class="img-fluid flex-shrink-0" src="~/assets/img/testimonial-4.jpg" style="width: 60px; height: 60px;" alt="Kamran Nəsibov">
-                    <div class="ps-3">
-                        <h4 class="text-primary text-uppercase mb-1">Kamran Nəsibov</h4>
-                        <span>Proqramçı</span>
-                    </div>
-                </div>
-                <p class="mb-0">
-                    Həyat yoldaşımın ad günü üçün sürpriz tort sifariş etdim. Xüsusi dizayn, əla dad və mükəmməl xidmət!
-                </p>
-            </div>
+            }
         </div>
     </div>
 </div>

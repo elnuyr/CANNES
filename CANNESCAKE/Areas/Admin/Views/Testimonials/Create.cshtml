@@ -1,0 +1,50 @@
+@model CANNESCAKE.Models.Testimonial
+
+@{
+    ViewData["Title"] = "Yeni Rəy";
+}
+
+<div class="row">
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yeni Müştəri Rəyi</h4>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ClientName" class="form-label">Müştəri Adı</label>
+                        <input asp-for="ClientName" class="form-control" placeholder="Ad Soyad" />
+                        <span asp-validation-for="ClientName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profession" class="form-label">Peşə</label>
+                        <input asp-for="Profession" class="form-control" placeholder="Peşə" />
+                        <span asp-validation-for="Profession" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Comment" class="form-label">Rəy</label>
+                        <textarea asp-for="Comment" class="form-control" rows="4" placeholder="Müştəri rəyi"></textarea>
+                        <span asp-validation-for="Comment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Rating" class="form-label">Reytinq (1-5)</label>
+                        <input asp-for="Rating" class="form-control" type="number" min="1" max="5" />
+                        <span asp-validation-for="Rating" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Şəkil</label>
+                        <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input asp-for="IsApproved" class="form-check-input" type="checkbox" />
+                            <label asp-for="IsApproved" class="form-check-label">Təsdiqlə</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Yadda Saxla</button>
+                    <a asp-action="Index" class="btn btn-light">Geri</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

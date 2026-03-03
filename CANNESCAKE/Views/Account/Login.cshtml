@@ -1,0 +1,75 @@
+@model CANNESCAKE.Models.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Daxil Ol";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-dark bg-img p-5 mb-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-4 text-uppercase text-white">Hesaba Giriş</h1>
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <i class="far fa-square text-primary px-2"></i>
+            <a asp-controller="Account" asp-action="Login">Daxil Ol</a>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Login Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+            <h2 class="text-primary font-secondary">Daxil Ol</h2>
+            <h1 class="display-4 text-uppercase">Xoş Gəlmişsiniz!</h1>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="bg-secondary border-inner p-5">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success mt-3 mb-4 text-center">
+                            @TempData["SuccessMessage"]
+                        </div>
+                    }
+                    <h4 class="text-uppercase mb-4 text-center">İstifadəçi Məlumatları</h4>
+                    <form asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input asp-for="Username" class="form-control border-0" placeholder="İstifadəçi Adı">
+                                    <label asp-for="Username">İstifadəçi Adı</label>
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input asp-for="Password" type="password" class="form-control border-0" placeholder="Şifrə">
+                                    <label asp-for="Password">Şifrə</label>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check text-start">
+                                    <input asp-for="RememberMe" class="form-check-input" type="checkbox">
+                                    <label asp-for="RememberMe" class="form-check-label text-white">Məni xatırla</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary border-inner w-100 py-3" type="submit">Daxil Ol</button>
+                            </div>
+                            <div class="col-12 text-center mt-3">
+                                <span class="text-white">Hesabınız yoxdur? </span>
+                                <a asp-action="Register" class="text-primary font-weight-bold">Qeydiyyatdan keçin</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login End -->

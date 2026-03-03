@@ -1,3 +1,5 @@
+@model IEnumerable<CANNESCAKE.Models.Category>
+
 @{
     ViewData["Title"] = "Menu & Pricing";
 }
@@ -24,176 +26,47 @@
         </div>
         <div class="tab-class text-center">
             <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase border-inner p-4 mb-5">
-                <li class="nav-item">
-                    <a class="nav-link text-white active" data-bs-toggle="pill" href="#tab-1">Ad Günü</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-2">Toy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-3">Xüsusi</a>
-                </li>
+                @{ var catIndex = 0; }
+                @foreach (var category in Model)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white @(catIndex == 0 ? "active" : "")" data-bs-toggle="pill" href="#tab-@category.Id">@category.Name</a>
+                    </li>
+                    catIndex++;
+                }
             </ul>
             <div class="tab-content">
-                <!-- Birthday Cakes -->
-                <div id="tab-1" class="tab-pane fade show p-0 active">
-                    <div class="row g-3">
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="Ad günü tortu" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼45.00</h4>
+                @{ catIndex = 0; }
+                @foreach (var category in Model)
+                {
+                    <div id="tab-@category.Id" class="tab-pane fade show p-0 @(catIndex == 0 ? "active" : "")">
+                        <div class="row g-3">
+                            @foreach (var cake in category.Cakes)
+                            {
+                                <div class="col-lg-6">
+                                    <div class="d-flex h-100">
+                                        <div class="flex-shrink-0">
+                                            @if (!string.IsNullOrEmpty(cake.ImageUrl))
+                                            {
+                                                <img class="img-fluid" src="@cake.ImageUrl" alt="@cake.Name" style="width: 150px; height: 85px; object-fit: cover;">
+                                            }
+                                            else
+                                            {
+                                                <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="@cake.Name" style="width: 150px; height: 85px;">
+                                            }
+                                            <h4 class="bg-dark text-primary p-2 m-0">₼@cake.Price.ToString("F2")</h4>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
+                                            <h5 class="text-uppercase">@cake.Name</h5>
+                                            <span>@cake.Description</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Klassik Ad Günü Tortu</h5>
-                                    <span>Vanil kremlə örtülmüş, rəngarəng bəzəklərlə süslənmiş ənənəvi ad günü tortu</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="Şokolad tortu" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼55.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Şokoladlı Ad Günü Tortu</h5>
-                                    <span>Zəngin şokolad kremlə hazırlanmış, şokolad parçaları ilə bəzədilmiş tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="Meyvəli tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼60.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Meyvəli Ad Günü Tortu</h5>
-                                    <span>Təzə meyvələrlə bəzədilmiş, yüngül kremlə hazırlanmış mövsümi tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-1.jpg" alt="Fondant tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼80.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Fondant Ad Günü Tortu</h5>
-                                    <span>Xüsusi dizaynla hazırlanmış fondant örtüklü premium ad günü tortu</span>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
-                </div>
-                <!-- Wedding Cakes -->
-                <div id="tab-2" class="tab-pane fade show p-0">
-                    <div class="row g-3">
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-2.jpg" alt="Toy tortu" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼150.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Klassik Toy Tortu</h5>
-                                    <span>Ağ fondant ilə örtülmüş, zərif çiçək bəzəkli ənənəvi toy tortu</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-2.jpg" alt="Çox mərtəbəli tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼250.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">3 Mərtəbəli Toy Tortu</h5>
-                                    <span>Üç mərtəbəli, əl ilə hazırlanmış şəkər çiçəkləri ilə bəzədilmiş tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-2.jpg" alt="Premium toy tortu" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼350.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Premium Toy Tortu</h5>
-                                    <span>5 mərtəbəli, qızıl bəzəkli, kristal dekorlu lüks toy tortu</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-2.jpg" alt="Nişan tortu" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼120.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Nişan Tortu</h5>
-                                    <span>Romantik dizaynlı, ürək formasında bəzəklərlə süslənmiş nişan tortu</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Custom Cakes -->
-                <div id="tab-3" class="tab-pane fade show p-0">
-                    <div class="row g-3">
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-3.jpg" alt="Xüsusi tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼70.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Foto Tort</h5>
-                                    <span>Şəxsi foto ilə çap olunmuş, xüsusi anlar üçün hazırlanmış tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-3.jpg" alt="Tematik tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼90.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Tematik Tort</h5>
-                                    <span>İstənilən mövzuda xüsusi dizayn edilmiş tematik tort sifarişi</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-3.jpg" alt="Korporativ tort" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼100.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Korporativ Tort</h5>
-                                    <span>Şirkət loqosu və rəngləri ilə hazırlanmış korporativ tədbirlər üçün tort</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex h-100">
-                                <div class="flex-shrink-0">
-                                    <img class="img-fluid" src="~/assets/img/cake-3.jpg" alt="Mini tortlar" style="width: 150px; height: 85px;">
-                                    <h4 class="bg-dark text-primary p-2 m-0">₼35.00</h4>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                    <h5 class="text-uppercase">Mini Tortlar (6 ədəd)</h5>
-                                    <span>Müxtəlif dadlarda hazırlanmış mini tort dəsti, qonaqlar üçün ideal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    catIndex++;
+                }
             </div>
         </div>
     </div>

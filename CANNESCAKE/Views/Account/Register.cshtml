@@ -1,0 +1,84 @@
+@model CANNESCAKE.Models.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Qeydiyyat";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-dark bg-img p-5 mb-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-4 text-uppercase text-white">Qeydiyyat</h1>
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <i class="far fa-square text-primary px-2"></i>
+            <a asp-controller="Account" asp-action="Register">Qeydiyyat</a>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Register Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+            <h2 class="text-primary font-secondary">Qeydiyyat</h2>
+            <h1 class="display-4 text-uppercase">Yeni Hesab Yarat</h1>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="bg-secondary border-inner p-5">
+                    <h4 class="text-uppercase mb-4 text-center">Şəxsi Məlumatlar</h4>
+                    <form asp-action="Register" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="FullName" class="form-control border-0" placeholder="Ad və Soyad">
+                                    <label asp-for="FullName">Ad və Soyad</label>
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="Username" class="form-control border-0" placeholder="İstifadəçi Adı">
+                                    <label asp-for="Username">İstifadəçi Adı</label>
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input asp-for="Email" type="email" class="form-control border-0" placeholder="E-poçt">
+                                    <label asp-for="Email">E-poçt</label>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="Password" type="password" class="form-control border-0" placeholder="Şifrə">
+                                    <label asp-for="Password">Şifrə</label>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="ConfirmPassword" type="password" class="form-control border-0" placeholder="Şifrənin təkrarı">
+                                    <label asp-for="ConfirmPassword">Şifrəni Təsdiqlə</label>
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary border-inner w-100 py-3" type="submit">Qeydiyyatdan Keç</button>
+                            </div>
+                            <div class="col-12 text-center mt-3">
+                                <span class="text-white">Artıq hesabınız var? </span>
+                                <a asp-action="Login" class="text-primary font-weight-bold">Daxil olun</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register End -->

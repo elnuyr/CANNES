@@ -1,0 +1,41 @@
+@model CANNESCAKE.Models.Order
+
+@{
+    ViewData["Title"] = "Sifariş Statusunu Dəyiş";
+}
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Sifariş #@Model.Id — Status Dəyiş</h4>
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="CustomerName" />
+                    <input type="hidden" asp-for="CustomerEmail" />
+                    <input type="hidden" asp-for="CustomerPhone" />
+                    <input type="hidden" asp-for="DeliveryAddress" />
+                    <input type="hidden" asp-for="Notes" />
+                    <input type="hidden" asp-for="TotalPrice" />
+                    <input type="hidden" asp-for="OrderDate" />
+
+                    <div class="form-group">
+                        <label class="form-label">Müştəri</label>
+                        <input class="form-control" value="@Model.CustomerName" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Status" class="form-label">Status</label>
+                        <select asp-for="Status" asp-items="Html.GetEnumSelectList<CANNESCAKE.Models.OrderStatus>()" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DeliveryDate" class="form-label">Çatdırılma Tarixi</label>
+                        <input asp-for="DeliveryDate" class="form-control" type="datetime-local" />
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Yenilə</button>
+                    <a asp-action="Index" class="btn btn-light">Geri</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

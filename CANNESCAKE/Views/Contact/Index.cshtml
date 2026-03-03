@@ -1,3 +1,5 @@
+@model CANNESCAKE.Models.ContactMessage
+
 @{
     ViewData["Title"] = "Contact Us";
 }
@@ -57,30 +59,38 @@
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <div class="bg-secondary border-inner p-5">
                     <h4 class="text-uppercase mb-4">Bizə Mesaj Göndərin</h4>
-                    <form>
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["Success"]</div>
+                    }
+                    <form asp-action="Index" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control border-0" id="name" placeholder="Adınız">
-                                    <label for="name">Adınız</label>
+                                    <input asp-for="Name" class="form-control border-0" placeholder="Adınız">
+                                    <label asp-for="Name">Adınız</label>
+                                    <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control border-0" id="email" placeholder="E-poçt">
-                                    <label for="email">E-poçt</label>
+                                    <input asp-for="Email" class="form-control border-0" placeholder="E-poçt">
+                                    <label asp-for="Email">E-poçt</label>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control border-0" id="subject" placeholder="Mövzu">
-                                    <label for="subject">Mövzu</label>
+                                    <input asp-for="Subject" class="form-control border-0" placeholder="Mövzu">
+                                    <label asp-for="Subject">Mövzu</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control border-0" placeholder="Mesajınız" id="message" style="height: 200px"></textarea>
-                                    <label for="message">Mesajınız</label>
+                                    <textarea asp-for="Message" class="form-control border-0" placeholder="Mesajınız" style="height: 200px"></textarea>
+                                    <label asp-for="Message">Mesajınız</label>
+                                    <span asp-validation-for="Message" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-12">
