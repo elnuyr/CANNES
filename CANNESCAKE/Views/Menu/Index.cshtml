@@ -56,9 +56,12 @@
                                             }
                                             <h4 class="bg-dark text-primary p-2 m-0">₼@cake.Price.ToString("F2")</h4>
                                         </div>
-                                        <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
+                                        <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4 w-100">
                                             <h5 class="text-uppercase">@cake.Name</h5>
                                             <span>@cake.Description</span>
+                                            <button class="btn btn-primary btn-sm border-inner mt-2 add-to-cart-btn" data-cake-id="@cake.Id" style="width: fit-content;">
+                                                <i class="fas fa-cart-plus me-1"></i>Səbətə Əlavə Et
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -90,3 +93,63 @@
     </div>
 </div>
 <!-- Offer End -->
+
+<!-- Toast Notification -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+    <div id="cartToast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="toastMessage">
+                <i class="fas fa-check-circle text-success me-2"></i>Məhsul səbətə əlavə edildi!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Bağla"></button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Səbətə əlavə et düyməsi
+            $('.add-to-cart-btn').click(function () {
+                var btn = $(this);
+                var cakeId = btn.data('cake-id');
+                var originalHtml = btn.html();
+
+                btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>Əlavə edilir...');
+
+                $.ajax({
+                    url: '/Basket/AddToCart',
+                    type: 'POST',
+                    data: { cakeId: cakeId, quantity: 1 },
+                    success: function (response) {
+                        if (response.success) {
+                            // Toast göstər
+                            $('#toastMessage').html('<i class="fas fa-check-circle text-success me-2"></i>' + response.message);
+                            var toast = new bootstrap.Toast(document.getElementById('cartToast'));
+                            toast.show();
+
+                            // Navbar-dakı səbət sayını yenilə
+                            if ($('#cartBadge').length) {
+                                $('#cartBadge').text(response.cartCount);
+                            }
+
+                            // Düyməni geri qaytar
+                            btn.html('<i class="fas fa-check me-1"></i>Əlavə edildi!');
+                            setTimeout(function () {
+                                btn.prop('disabled', false).html(originalHtml);
+                            }, 1500);
+                        } else {
+                            btn.prop('disabled', false).html(originalHtml);
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        btn.prop('disabled', false).html(originalHtml);
+                        alert('Xəta baş verdi. Yenidən cəhd edin.');
+                    }
+                });
+            });
+        });
+    </script>
+}
+

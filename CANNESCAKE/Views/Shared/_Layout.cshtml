@@ -84,13 +84,16 @@
                     </div>
                 </div>
                 <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Əlaqə</a>
+                <a asp-controller="Basket" asp-action="Index" class="nav-item nav-link position-relative" style="color:#E88F2A">
+                    <i class="fas fa-shopping-cart"></i> Səbət
+                    <span id="cartBadge" class="badge bg-danger position-absolute" style="top: 5px; right: -5px; font-size: 0.65rem;">0</span>
+                </a>
                 
                 @if (User.Identity!.IsAuthenticated)
                 {
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color:#E88F2A">Hesabım (@User.Identity.Name)</a>
                         <div class="dropdown-menu m-0">
-                            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="dropdown-item">Admin Panel</a>
                             <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
                                 <button type="submit" class="dropdown-item text-danger border-0 bg-transparent" style="text-align:left;">Çıxış Et</button>
                             </form>
@@ -191,6 +194,21 @@
 
     <!-- Template Javascript -->
     <script src="~/assets/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        // Səbət sayını yüklə
+        $(document).ready(function () {
+            $.get('/Basket/GetCartCount', function (data) {
+                if (data.count > 0) {
+                    $('#cartBadge').text(data.count).show();
+                } else {
+                    $('#cartBadge').hide();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

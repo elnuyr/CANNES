@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Migrations\\20260303194322_AddIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20260303194322_AddIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|c:\\users\\nesir\\desktop\\cannes\\cannescake\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|c:\\users\\nesir\\desktop\\cannes\\cannescake\\migrations\\20260303194322_addidentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|solutionrelative:migrations\\20260303194322_addidentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|c:\\users\\nesir\\desktop\\cannes\\cannescake\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -79,10 +83,6 @@
       "RelativeMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|solutionrelative:models\\subscriber.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|c:\\users\\nesir\\desktop\\cannes\\cannescake\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|c:\\users\\nesir\\desktop\\cannes\\cannescake\\models\\contactmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F4E27FB-31AE-42A3-A3B2-544C041EE6E4}|CANNESCAKE.csproj|solutionrelative:models\\contactmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -146,7 +146,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -154,13 +154,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "20260303194322_AddIdentity.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Migrations\\20260303194322_AddIdentity.cs",
               "RelativeDocumentMoniker": "Migrations\\20260303194322_AddIdentity.cs",
               "ToolTip": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Migrations\\20260303194322_AddIdentity.cs",
               "RelativeToolTip": "Migrations\\20260303194322_AddIdentity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-03T19:43:22.83Z",
               "EditorCaption": ""
@@ -168,19 +168,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "Models\\BaseEntity.cs",
-              "ToolTip": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\BaseEntity.cs",
-              "RelativeToolTip": "Models\\BaseEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T11:59:05.433Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "CANNESCAKE.csproj",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\CANNESCAKE.csproj",
               "RelativeDocumentMoniker": "CANNESCAKE.csproj",
@@ -188,12 +175,11 @@
               "RelativeToolTip": "CANNESCAKE.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-02-11T08:55:13.311Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-11T08:55:13.311Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\OrderItem.cs",
               "RelativeDocumentMoniker": "Models\\OrderItem.cs",
@@ -201,12 +187,11 @@
               "RelativeToolTip": "Models\\OrderItem.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAYwBkAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T11:59:50.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-11T11:59:50.168Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
@@ -214,12 +199,11 @@
               "RelativeToolTip": "Data\\AppDbContext.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAAAAwAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T08:51:18.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-11T08:51:18.926Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AboutController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Controllers\\AboutController.cs",
               "RelativeDocumentMoniker": "Controllers\\AboutController.cs",
@@ -227,12 +211,11 @@
               "RelativeToolTip": "Controllers\\AboutController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T11:00:15.37Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-11T11:00:15.37Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
@@ -240,12 +223,36 @@
               "RelativeToolTip": "Controllers\\HomeController.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T08:44:05.299Z",
+              "WhenOpened": "2026-02-11T08:44:05.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Models\\Order.cs",
+              "ToolTip": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\Order.cs",
+              "RelativeToolTip": "Models\\Order.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAwwAUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T11:58:25.549Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "Models\\BaseEntity.cs",
+              "ToolTip": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\BaseEntity.cs",
+              "RelativeToolTip": "Models\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T11:59:05.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "CakesController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Areas\\Admin\\Controllers\\CakesController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\CakesController.cs",
@@ -253,12 +260,11 @@
               "RelativeToolTip": "Areas\\Admin\\Controllers\\CakesController.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAYwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T12:34:32.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-11T12:34:32.222Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Areas\\Admin\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\CategoriesController.cs",
@@ -270,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ContactMessagesController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Areas\\Admin\\Controllers\\ContactMessagesController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\ContactMessagesController.cs",
@@ -282,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "OrdersController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Areas\\Admin\\Controllers\\OrdersController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\OrdersController.cs",
@@ -294,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "TeamMembersController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Areas\\Admin\\Controllers\\TeamMembersController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\TeamMembersController.cs",
@@ -306,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ContactController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Controllers\\ContactController.cs",
               "RelativeDocumentMoniker": "Controllers\\ContactController.cs",
@@ -318,7 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Subscriber.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\Subscriber.cs",
               "RelativeDocumentMoniker": "Models\\Subscriber.cs",
@@ -330,19 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "Models\\Order.cs",
-              "ToolTip": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\Order.cs",
-              "RelativeToolTip": "Models\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T11:58:25.549Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\DashboardController.cs",
@@ -354,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "TeamMember.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\TeamMember.cs",
               "RelativeDocumentMoniker": "Models\\TeamMember.cs",
@@ -366,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Testimonial.cs",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Models\\Testimonial.cs",
               "RelativeDocumentMoniker": "Models\\Testimonial.cs",
@@ -378,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -390,7 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\nesir\\Desktop\\CANNES\\CANNESCAKE\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",

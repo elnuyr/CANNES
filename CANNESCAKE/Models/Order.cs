@@ -5,6 +5,11 @@ namespace CANNESCAKE.Models
 {
     public class Order : BaseEntity
     {
+        // İstifadəçi ilə əlaqə
+        public string? UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public AppUser? User { get; set; }
 
         [Required(ErrorMessage = "Müştəri adı daxil edilməlidir")]
         [StringLength(100)]
