@@ -175,15 +175,12 @@
                     </li>
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                            <img src="../../../assets/images/faces/face5.jpg" alt="profile" />
-                            <span class="nav-profile-name">Louis Barnett</span>
+                            <i class="mdi mdi-account-circle-outline icon-md text-primary"></i>
+                            <span class="nav-profile-name">@User.Identity?.Name</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item">
-                                <i class="mdi mdi-cog text-primary"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item">
+                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="d-none"></form>
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit();">
                                 <i class="mdi mdi-logout text-primary"></i>
                                 Logout
                             </a>

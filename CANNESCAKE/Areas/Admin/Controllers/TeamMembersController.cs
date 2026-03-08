@@ -5,8 +5,7 @@ using CANNESCAKE.Models;
 
 namespace CANNESCAKE.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class TeamMembersController : Controller
+    public class TeamMembersController : AdminBaseController
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;

@@ -2,17 +2,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CANNESCAKE.Data;
 using CANNESCAKE.Models;
+using Microsoft.AspNetCore.SignalR;
+using CANNESCAKE.Hubs;
 
 namespace CANNESCAKE.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class OrdersController : Controller
+    public class OrdersController : AdminBaseController
     {
         private readonly AppDbContext _context;
+        private readonly IHubContext<OrderHub> _hubContext;
 
-        public OrdersController(AppDbContext context)
+        public OrdersController(AppDbContext context, IHubContext<OrderHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         public async Task<IActionResult> Index()
@@ -50,6 +53,13 @@ namespace CANNESCAKE.Areas.Admin.Controllers
                 {
                     _context.Update(order);
                     await _context.SaveChangesAsync();
+                    
+                    if (!string.IsNullOrEmpty(order.UserId))
+                    {
+                        var statusString = order.Status.ToString();
+                        // Send real-time update to specific user
+                        await _hubContext.Clients.User(order.UserId).SendAsync("ReceiveOrderStatusUpdate", order.Id, statusString);
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {

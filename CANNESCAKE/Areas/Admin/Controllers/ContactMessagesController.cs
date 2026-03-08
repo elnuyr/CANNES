@@ -5,8 +5,7 @@ using CANNESCAKE.Models;
 
 namespace CANNESCAKE.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class ContactMessagesController : Controller
+    public class ContactMessagesController : AdminBaseController
     {
         private readonly AppDbContext _context;
 

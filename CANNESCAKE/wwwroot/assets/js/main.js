@@ -33,8 +33,8 @@
         var $videoSrc;
         $('.btn-play').click(function () {
             $videoSrc = $(this).data("src");
+            console.log($videoSrc);
         });
-        console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");

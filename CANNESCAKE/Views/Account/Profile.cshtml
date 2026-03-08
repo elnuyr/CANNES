@@ -1,0 +1,141 @@
+@model CANNESCAKE.Models.ViewModels.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Profilim";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-dark text-white-50 bg-img mb-5" style="padding: 100px 0;">
+    <div class="container text-center">
+        <h1 class="display-4 text-uppercase text-white mb-3">Profilim</h1>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <!-- User Info -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="bg-dark text-white p-4 d-flex align-items-center rounded border-inner">
+                    <i class="bi bi-person-circle display-4 text-primary me-4"></i>
+                    <div>
+                        <h3 class="text-primary text-uppercase mb-2">Xoş Gəldiniz, @Model.User.FullName</h3>
+                        <p class="mb-0 fs-5"><strong>E-poçt:</strong> @Model.User.Email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="text-primary text-uppercase mb-4">Sifarişlərim</h3>
+                @if (Model.Orders != null && Model.Orders.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle text-center">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Sifariş Tarixi</th>
+                                    <th>Məhsullar / Qeydlər</th>
+                                    <th>Çatdırılma Ünvanı</th>
+                                    <th>Məbləğ</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model.Orders)
+                                {
+                                    <tr>
+                                        <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                        <td>@(string.IsNullOrEmpty(order.Notes) ? "Qeyd yoxdur" : order.Notes)</td>
+                                        <td>@order.DeliveryAddress</td>
+                                        <td>@order.TotalPrice.ToString("C")</td>
+                                        <td>
+                                            @{
+                                                string badgeClass = order.Status switch
+                                                {
+                                                    CANNESCAKE.Models.OrderStatus.Gözləmədə => "bg-warning text-dark",
+                                                    CANNESCAKE.Models.OrderStatus.Təsdiqləndi => "bg-info text-dark",
+                                                    CANNESCAKE.Models.OrderStatus.Hazırlanır => "bg-primary text-white",
+                                                    CANNESCAKE.Models.OrderStatus.Çatdırılır => "bg-secondary text-white",
+                                                    CANNESCAKE.Models.OrderStatus.Tamamlandı => "bg-success",
+                                                    CANNESCAKE.Models.OrderStatus.Ləğvedildi => "bg-danger",
+                                                    _ => "bg-light text-dark"
+                                                };
+                                            }
+                                            <span id="status-badge-@order.Id" class="badge @badgeClass py-2 px-3 fs-6">@order.Status</span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="bg-dark alert alert-info py-4 text-center border-inner" style="background-color: #2b2825 !important; color:#fff !important; border:none;">
+                        Hələ ki, heç bir sifarişiniz yoxdur. <a asp-controller="Menu" asp-action="Index" class="text-primary fw-bold" style="text-decoration: underline;">Menyuya daxil olaraq sifariş verə bilərsiniz</a>.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- SignalR library via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.25/signalr.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Setup SignalR connection
+            var connection = new signalR.HubConnectionBuilder()
+                .withUrl("/orderHub")
+                .build();
+
+            // Listen for status updates
+            connection.on("ReceiveOrderStatusUpdate", function (orderId, newStatus) {
+                var badgeId = "status-badge-" + orderId;
+                var badgeElement = document.getElementById(badgeId);
+                
+                if (badgeElement) {
+                    badgeElement.innerText = newStatus;
+                    
+                    // Reset class
+                    badgeElement.className = "badge py-2 px-3 fs-6";
+                    
+                    // Apply new color class based on status
+                    switch(newStatus) {
+                        case "Gözləmədə":
+                            badgeElement.classList.add("bg-warning", "text-dark");
+                            break;
+                        case "Təsdiqləndi":
+                            badgeElement.classList.add("bg-info", "text-dark");
+                            break;
+                        case "Hazırlanır":
+                            badgeElement.classList.add("bg-primary", "text-white");
+                            break;
+                        case "Çatdırılır":
+                            badgeElement.classList.add("bg-secondary", "text-white");
+                            break;
+                        case "Tamamlandı":
+                            badgeElement.classList.add("bg-success");
+                            break;
+                        case "Ləğvedildi":
+                            badgeElement.classList.add("bg-danger");
+                            break;
+                        default:
+                            badgeElement.classList.add("bg-light", "text-dark");
+                            break;
+                    }
+                }
+            });
+
+            // Start connection
+            connection.start().catch(function (err) {
+                return console.error(err.toString());
+            });
+        });
+    </script>
+}
