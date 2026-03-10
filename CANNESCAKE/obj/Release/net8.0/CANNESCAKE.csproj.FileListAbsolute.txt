@@ -269,3 +269,15 @@ C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\apps
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\CANNESCAKE.deps.json
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\CANNESCAKE.runtimeconfig.json
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\CANNESCAKE.staticwebassets.endpoints.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\web.config
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\appsettings.Development.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\appsettings.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\CANNESCAKE.deps.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\CANNESCAKE.runtimeconfig.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\CANNESCAKE.staticwebassets.endpoints.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\publish\web.config
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\publish\appsettings.Development.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\publish\appsettings.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\publish\CANNESCAKE.deps.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\publish\CANNESCAKE.runtimeconfig.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\bin\Release\net8.0\publish\publish\publish\publish\CANNESCAKE.staticwebassets.endpoints.json

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CANNESCAKE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3de106e3e4b5318f326850a805f08f89b8aa036")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81beed287dc9964bd4d05d3ceaa0c3cf2db83f71")]
 [assembly: System.Reflection.AssemblyProductAttribute("CANNESCAKE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CANNESCAKE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

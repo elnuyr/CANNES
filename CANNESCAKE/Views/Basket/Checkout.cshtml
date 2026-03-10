@@ -116,6 +116,42 @@
                             <span class="text-primary fs-4 fw-bold">₼@Model.GrandTotal.ToString("F2")</span>
                         </div>
 
+                        <!-- Payment Method Selection -->
+                        <h5 class="text-white text-uppercase mb-3">Ödəniş Üsulu</h5>
+                        <div class="mb-4">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="PaymentMethod" id="cashOnDelivery" value="CashOnDelivery" checked>
+                                <label class="form-check-label text-white" for="cashOnDelivery">
+                                    Qapıda Nağd Ödəniş
+                                </label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="PaymentMethod" id="creditCard" value="CreditCard">
+                                <label class="form-check-label text-white" for="creditCard">
+                                    Onlayn Kartla Ödəniş
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Credit Card Form (Placeholder) -->
+                        <div id="creditCardForm" class="bg-secondary p-3 mb-4 rounded d-none">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Kartın üzərindəki ad">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Kart nömrəsi (XXXX XXXX XXXX XXXX)">
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="AY/İL">
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <input type="password" class="form-control" placeholder="CVC">
+                                </div>
+                            </div>
+                            <small class="text-dark"><i>* Bu demo məqsədlidir, real bank inteqrasiyası tələb olunur.</i></small>
+                        </div>
+
                         <button type="submit" class="btn btn-primary border-inner py-3 w-100 text-uppercase fw-bold" id="placeOrderBtn">
                             <i class="fas fa-check-circle me-2"></i>Sifarişi Təsdiqlə
                         </button>
@@ -132,3 +168,17 @@
     </div>
 </div>
 <!-- Checkout End -->
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('input[name="PaymentMethod"]').change(function() {
+                if ($(this).val() === 'CreditCard') {
+                    $('#creditCardForm').removeClass('d-none');
+                } else {
+                    $('#creditCardForm').addClass('d-none');
+                }
+            });
+        });
+    </script>
+}

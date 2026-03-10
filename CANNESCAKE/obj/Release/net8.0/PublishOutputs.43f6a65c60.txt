@@ -1,4 +1,5 @@
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\CANNESCAKE.exe
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\publish\web.config
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\web.config
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\web.config
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\appsettings.Development.json
@@ -13,6 +14,11 @@ C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\appsettings.jso
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\CANNESCAKE.deps.json
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\CANNESCAKE.runtimeconfig.json
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\CANNESCAKE.staticwebassets.endpoints.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\publish\appsettings.Development.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\publish\appsettings.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\publish\CANNESCAKE.deps.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\publish\CANNESCAKE.runtimeconfig.json
+C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\publish\publish\publish\CANNESCAKE.staticwebassets.endpoints.json
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\CANNESCAKE.dll
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\CANNESCAKE.runtimeconfig.json
 C:\Users\nesir\Desktop\CANNES\CANNESCAKE\publish\CANNESCAKE.pdb

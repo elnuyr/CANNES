@@ -18,6 +18,7 @@ namespace CANNESCAKE.Models.ViewModels
         public string? DeliveryAddress { get; set; }
         public string? Notes { get; set; }
         public DateTime? DeliveryDate { get; set; }
+        public string PaymentMethod { get; set; } = "CashOnDelivery"; // Default
         public List<CartItemViewModel> CartItems { get; set; } = new();
         public decimal GrandTotal => CartItems.Sum(x => x.TotalPrice);
     }

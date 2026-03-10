@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
+using CANNESCAKE.Services;
 
 namespace CANNESCAKE.Controllers
 {
@@ -15,10 +16,13 @@ namespace CANNESCAKE.Controllers
         private readonly UserManager<AppUser> _userManager;
         private const string CartSessionKey = "ShoppingCart";
 
-        public BasketController(AppDbContext context, UserManager<AppUser> userManager)
+        private readonly IEmailService _emailService;
+
+        public BasketController(AppDbContext context, UserManager<AppUser> userManager, IEmailService emailService)
         {
             _context = context;
             _userManager = userManager;
+            _emailService = emailService;
         }
 
         // Səbəti göstər
@@ -168,6 +172,27 @@ namespace CANNESCAKE.Controllers
 
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
+
+            // Send Email Notifications
+            try
+            {
+                var userSubject = "Sifarişiniz qəbul edildi! - Cannes Cake";
+                var userBody = $"<h1>Təşəkkürlər, {order.CustomerName}!</h1>" +
+                               $"<p>Sizin #{order.Id} nömrəli sifarişiniz uğurla qəbul edildi.</p>" +
+                               $"<p><b>Ümumi Məbləğ:</b> ₼{order.TotalPrice:F2}</p>" +
+                               $"<p><b>Çatdırılma Ünvanı:</b> {order.DeliveryAddress}</p>";
+                await _emailService.SendEmailAsync(order.CustomerEmail, userSubject, userBody);
+
+                // Notification to Admin
+                var adminEmail = _context.Users.Where(u => u.UserName == "admin").Select(u => u.Email).FirstOrDefault() ?? "admin@cannescake.com";
+                var adminSubject = "Yeni Sifariş! - #" + order.Id;
+                var adminBody = $"<h1>Yeni Sifariş Gəldi!</h1>" +
+                                $"<p><b>Müştəri:</b> {order.CustomerName}</p>" +
+                                $"<p><b>Telefon:</b> {order.CustomerPhone}</p>" +
+                                $"<p><b>Məbləğ:</b> ₼{order.TotalPrice:F2}</p>";
+                await _emailService.SendEmailAsync(adminEmail, adminSubject, adminBody);
+            }
+            catch { /* Ignore email errors to prevent order failure */ }
 
             // Səbəti təmizlə
             HttpContext.Session.Remove(CartSessionKey);

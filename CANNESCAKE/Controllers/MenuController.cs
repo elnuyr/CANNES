@@ -13,12 +13,28 @@ namespace CANNESCAKE.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? searchTerm)
         {
-            var categories = await _context.Categories
+            ViewData["SearchTerm"] = searchTerm;
+
+            var categoriesQuery = _context.Categories
                 .Include(c => c.Cakes.Where(cake => cake.IsAvailable))
-                .ToListAsync();
-            return View(categories);
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Filter categories that have cakes matching the search term, 
+                // and within those categories, only include the matching cakes.
+                var matchingCategories = await _context.Categories
+                    .Include(c => c.Cakes.Where(cake => cake.IsAvailable && (cake.Name.Contains(searchTerm) || cake.Description.Contains(searchTerm))))
+                    .Where(c => c.Cakes.Any(cake => cake.IsAvailable && (cake.Name.Contains(searchTerm) || cake.Description.Contains(searchTerm))))
+                    .ToListAsync();
+                
+                return View(matchingCategories);
+            }
+
+            var allCategories = await categoriesQuery.ToListAsync();
+            return View(allCategories);
         }
     }
 }

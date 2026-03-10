@@ -24,7 +24,37 @@
             <h2 class="text-primary font-secondary">Menu & Qiymətlər</h2>
             <h1 class="display-4 text-uppercase">Tortlarımızı Kəşf Edin</h1>
         </div>
-        <div class="tab-class text-center">
+
+        <!-- Search Bar Start -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-6">
+                <form asp-action="Index" method="get">
+                    <div class="input-group">
+                        <input type="text" name="searchTerm" class="form-control border-inner p-3" 
+                               placeholder="Tort axtarın..." value="@ViewData["SearchTerm"]">
+                        <button class="btn btn-primary px-4" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+                @if (!string.IsNullOrEmpty(ViewData["SearchTerm"]?.ToString()))
+                {
+                    <div class="text-center mt-3">
+                        <a asp-action="Index" class="text-primary"><i class="fa fa-times me-1"></i>Axtarışı təmizlə</a>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- Search Bar End -->
+
+        @if (!Model.Any())
+        {
+            <div class="text-center py-5">
+                <h3 class="text-uppercase mb-4">Axtarışa uyğun tort tapılmadı.</h3>
+                <a asp-action="Index" class="btn btn-primary border-inner py-3 px-5">Bütün Menyuya Bax</a>
+            </div>
+        }
+        else
+        {
+            <div class="tab-class text-center">
             <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase border-inner p-4 mb-5">
                 @{ var catIndex = 0; }
                 @foreach (var category in Model)
@@ -72,6 +102,7 @@
                 }
             </div>
         </div>
+        }
     </div>
 </div>
 <!-- Products End -->

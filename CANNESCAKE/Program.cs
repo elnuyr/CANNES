@@ -2,12 +2,14 @@ using CANNESCAKE.Data;
 using CANNESCAKE.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using CANNESCAKE.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR(); 
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 
 builder.Services.AddDistributedMemoryCache();
